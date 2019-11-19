@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Javascript</title>
+    <script type="text/javascript" src="src/broken-greetings.js"></script>
+</head>
+<body>
+
+    <p id="output1">
+    </p>
+
+    <p id="output2">
+    </p>
+
+    <script>
+        document.getElementById('output1').innerHTML = new Person('Hugo').greet('Lisa');
+
+        document.getElementById('output2').innerHTML = helloWorld();
+    </script>
+
+</body>
+</html>
