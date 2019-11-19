@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+}
+
+p {
+    color: azure;
+}
+
+#command-center {
+    background-color: grey;
+    margin: 10%;
+}
+
+div {
+    margin: 5px;
+}
+
+.mars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    list-style: none;
+    max-width: 75%;
+    margin: 40px auto;
+    padding: 0;
+}
+
+.cell {
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: #263238;
+    transition: background .2s;
+    min-height: 70px;
+}
+
+.cell.pat
