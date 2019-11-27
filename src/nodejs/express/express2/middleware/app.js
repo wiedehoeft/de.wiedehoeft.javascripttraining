@@ -2,7 +2,10 @@
 
 const http = require('http'),
     path = require('path');
-const express = require('express');
+
+const express = require('express'),
+    bodyParser = require('body-parser');
+
 const logger = require('./logger');
 
 const app = express();
@@ -11,7 +14,16 @@ app.use(logger({
     level: 'info'
 }));
 
+app.use(bodyParser.json({
+    limit: '100kb', // default
+    strict: true // default (only accept object or array)
+}));
+
 app.use('/', express.static(path.join(__dirname, 'client')));
+
+app.post('/articles', (req, res) => {
+    res.send(`Hallo ${req.body.user}`)
+});
 
 app.get('/blog/:year/:month/:day?', (req, res) => {
 
