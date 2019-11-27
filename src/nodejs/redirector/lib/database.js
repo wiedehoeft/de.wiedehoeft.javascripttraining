@@ -81,7 +81,25 @@ const database = {
       if (err) {
         return callback(err);
       }
+
+      if (!mapping) {
+        return callback(new Error('Alias not found!'));
+      }
+
       callback(null);
+    });
+  },
+
+  getMappings(callback) {
+    if (!callback) {
+      throw new Error('Callback is missing');
+    }
+
+    this.mappings.find().toArray((err, mappings) => {
+      if (err) {
+        return callback(err);
+      }
+      callback(null, mappings);
     });
   }
 };

@@ -13,7 +13,7 @@ const https = require('https');
 const {flaschenpost} = require('flaschenpost'),
   {processenv} = require('processenv');
 
-const database = require('./database'),
+const database = require('./lib/database'),
   getKeys = require('./keys'), //uses index.js
   getApp = require('./lib/getApp');
 

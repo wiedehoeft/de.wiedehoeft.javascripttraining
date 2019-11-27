@@ -19,6 +19,7 @@
     "mocha": "^6.2.2",
     "needle": "^2.4.0",
     "processenv": "^3.0.0",
+    "require-dir": "^1.2.0",
     "uuidv4": "^6.0.0"
   }
 }

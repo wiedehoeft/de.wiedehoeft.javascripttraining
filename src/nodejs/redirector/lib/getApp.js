@@ -3,8 +3,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const {flaschenpost} = require('flaschenpost');
-const logger = flaschenpost.getLogger();
+const routes = require('./routes');
 
 const getApp = (database) => {
   if (!database) {
@@ -14,33 +13,9 @@ const getApp = (database) => {
   const app = express();
   app.use(bodyParser.json());
 
-  app.get('/:alias', (req, res) => {
-    const alias = req.params.alias;
-
-    database.getMapping(alias, (err, mapping) => {
-      if (err) {
-        logger.warn(err);
-        return res.status(404).end();
-      }
-
-      res.redirect(mapping.target);
-    });
-
-  });
-
-  app.post('/api/:alias', (req, res) => {
-    console.log(req.body);
-    const alias = req.params.alias,
-      target = req.body.target;
-
-    database.createMapping(alias, target, err => {
-      if (err) {
-        logger.error(err);
-        return res.status(500).end();
-      }
-      res.status(201).end();
-    });
-  });
+  app.get('/api', routes.getApi(database));
+  app.post('/api/:alias', routes.postApiAlias(database));
+  app.get('/:alias', routes.getAlias(database));
 
   return app;
 };
