@@ -24,6 +24,7 @@ const database = {
         return callback(err);
       }
 
+      // TODO: Mappings not initialized at first call
       const mappings = client.db('admin').collection('mappings');
       this.mappings = mappings;
 
@@ -95,12 +96,15 @@ const database = {
       throw new Error('Callback is missing');
     }
 
-    this.mappings.find().toArray((err, mappings) => {
-      if (err) {
-        return callback(err);
-      }
-      callback(null, mappings);
-    });
+    this.mappings
+      .find({}, {_id: 0}) //TODO: Fix me!
+      .sort({alias: 1})
+      .toArray((err, mappings) => {
+        if (err) {
+          return callback(err);
+        }
+        callback(null, mappings);
+      });
   },
 
   invokeMapping(id, callback) {
