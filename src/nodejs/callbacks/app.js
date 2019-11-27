@@ -7,7 +7,7 @@ console.log(squares);
 
 const words = ['the', 'quick', 'brown', 'fox'];
 const wordLenghts = words.map(word => ({
-    word: word, length: word.length
+  word: word, length: word.length
 }));
 
 console.log(wordLenghts);

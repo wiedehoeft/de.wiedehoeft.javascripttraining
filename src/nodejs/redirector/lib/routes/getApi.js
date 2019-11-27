@@ -12,7 +12,7 @@ const getApi = (database) => {
       }
       res.send(mappings);
     });
-  }
+  };
 };
 
 module.exports = getApi;

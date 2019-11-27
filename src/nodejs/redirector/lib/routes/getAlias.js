@@ -19,9 +19,9 @@ const getAlias = (database) => {
           return res.status(500).end();
         }
         res.redirect(307, mapping.target);
-      })
+      });
     });
-  }
+  };
 };
 
 module.exports = getAlias;

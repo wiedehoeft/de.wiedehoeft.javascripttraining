@@ -16,7 +16,7 @@ const postApiAlias = (database) => {
       }
       res.status(201).end();
     });
-  }
+  };
 };
 
 module.exports = postApiAlias;

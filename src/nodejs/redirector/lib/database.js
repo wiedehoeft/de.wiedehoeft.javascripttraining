@@ -52,7 +52,7 @@ const database = {
       }
 
       callback(null, mapping);
-    })
+    });
   },
 
   createMapping(alias, target, callback) {
@@ -121,7 +121,7 @@ const database = {
         return callback(err);
       }
       return callback(null);
-    })
+    });
   }
 };
 
