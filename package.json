@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "mongodb": "^3.3.5"
+  },
   "devDependencies": {
     "body-parser": "^1.19.0",
     "esm": "^3.2.25",
