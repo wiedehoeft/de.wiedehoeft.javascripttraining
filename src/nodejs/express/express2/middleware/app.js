@@ -1,10 +1,10 @@
 'use strict';
 
 const http = require('http'),
-  path = require('path');
+      path = require('path');
 
 const express = require('express'),
-  bodyParser = require('body-parser');
+      bodyParser = require('body-parser');
 
 const logger = require('./logger');
 
@@ -15,8 +15,8 @@ app.use(logger({
 }));
 
 app.use(bodyParser.json({
-  limit: '100kb', // default
-  strict: true // default (only accept object or array)
+  limit: '100kb', // Default
+  strict: true // Default (only accept object or array)
 }));
 
 app.use('/', express.static(path.join(__dirname, 'client')));
@@ -26,16 +26,16 @@ app.post('/articles', (req, res) => {
 });
 
 app.get('/blog/:year/:month/:day?', (req, res) => {
-
   if (req.query.format === 'html') {
     res.send(`<h1> ${req.params.day}.${req.params.month}.${req.params.year} </h1>`);
+
     return;
   }
 
   res.send({
     year: Number(req.params.year),
     month: Number(req.params.month),
-    day: Number(req.params.day) || 1,
+    day: Number(req.params.day) || 1
   });
 });
 

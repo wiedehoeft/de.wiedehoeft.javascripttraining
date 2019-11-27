@@ -2,22 +2,22 @@
 
 const mongodb = require('mongodb');
 
-const MongoClient = mongodb.MongoClient;
+const { MongoClient } = mongodb;
 
 const connectionString = 'mongodb://admin:secret@localhost:27017';
 
-MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
+MongoClient.connect(connectionString, { autoReconnect: true }, (err, client) => {
   if (err) {
     return console.log('Failed to connect');
   }
   console.log('Connected');
 
-  // async syntax
+  // Async syntax
   // client.collection(name, (err, collection) => {
   //
   // });
 
-  const users = client.db('admin').collection('users'); // will create users collection if not present, when strict parameter not set
+  const users = client.db('admin').collection('users'); // Will create users collection if not present, when strict parameter not set
 
   // CREATE
   const user = {
@@ -44,8 +44,8 @@ MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
 
   users.find({
     firstName: 'Jane'
-  })
-    .toArray((err, documents) => {
+  }).
+    toArray((err, documents) => {
       if (err) {
         console.log(err);
         process.exit(1);
@@ -73,8 +73,8 @@ MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
 
   users.find({
     firstName: 'Jane'
-  })
-    .toArray((err, documents) => {
+  }).
+    toArray((err, documents) => {
       if (err) {
         console.log(err);
         process.exit(1);
@@ -83,7 +83,7 @@ MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
     });
 
   // DELETE
-  users.deleteMany({firstName: 'Jane'}, err => {
+  users.deleteMany({ firstName: 'Jane' }, err => {
     if (err) {
       console.log(err);
       process.exit(1);
@@ -92,8 +92,8 @@ MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
 
   users.find({
     firstName: 'Jane'
-  })
-    .toArray((err, documents) => {
+  }).
+    toArray((err, documents) => {
       if (err) {
         console.log(err);
         process.exit(1);

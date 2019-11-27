@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs'),
-  path = require('path');
+      path = require('path');
 
 const filename = path.join(__dirname, 'foobar.txt');
 
@@ -17,7 +17,7 @@ fs.readFile(filename, 'utf-8', (err, content) => {
 
 console.log('###2');
 
-/*---------------------------------------------------------*/
+/* ---------------------------------------------------------*/
 const cache = {};
 
 /* This mixes sync and async functions, when setTimeout is commented out! */
@@ -27,17 +27,17 @@ const loadFile = (fileName, callback) => {
   if (content) {
     console.log('From cache');
 
-    //return setTimeout(() => {
+    // Return setTimeout(() => {
     //    callback(null, content);
-    //}, 0); // Now then function is aysnc
+    // }, 0); // Now then function is aysnc
 
-    //return setImmediate(() => {
+    // return setImmediate(() => {
     //    callback(null, content);
-    //});
+    // });
 
     return process.nextTick(() => {
       callback(null, content);
-    }); // faster return then setTimeout or setImmediate
+    }); // Faster return then setTimeout or setImmediate
   }
 
   fs.readFile(filename, 'utf-8', (err, content) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const getApi = (database) => {
+const getApi = database => {
   if (!database) {
     throw new Error('Database is missing!');
   }

@@ -2,7 +2,7 @@
 
 const NetworkConnection = require('./NetworkConnection');
 
-const networkConnection = new NetworkConnection({host: 'www.thenativeweb.io', port: 443});
+const networkConnection = new NetworkConnection({ host: 'www.thenativeweb.io', port: 443 });
 
 const onOnline = () => {
   console.log('online');

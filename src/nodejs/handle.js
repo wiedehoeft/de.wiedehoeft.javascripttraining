@@ -3,7 +3,7 @@ const handle = (req, res) => {
     'content-type': 'text/html'
   });
 
-  res.write('Hello HTTP. ' + req.method + req.url);
+  res.write(`Hello HTTP. ${req.method}${req.url}`);
 
   res.end();
 };

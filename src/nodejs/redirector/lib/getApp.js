@@ -5,12 +5,13 @@ const express = require('express');
 
 const routes = require('./routes');
 
-const getApp = (database) => {
+const getApp = database => {
   if (!database) {
     throw new Error('Database is missing!');
   }
 
   const app = express();
+
   app.use(bodyParser.json());
 
   app.get('/api', routes.getApi(database));

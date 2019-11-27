@@ -1,6 +1,6 @@
 'use strict';
 
-const logger = (options) => {
+const logger = options => {
   if (!options) {
     throw new Error('Options are missing!');
   }

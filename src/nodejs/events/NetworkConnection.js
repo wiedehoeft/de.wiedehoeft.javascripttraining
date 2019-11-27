@@ -4,11 +4,10 @@ const events = require('events');
 
 const needle = require('needle');
 
-const EventEmitter = events.EventEmitter;
+const { EventEmitter } = events;
 
 class NetworkConnection extends EventEmitter {
-
-  constructor(options) {
+  constructor (options) {
     if (!options) {
       throw new Error('Options are missing');
     }
@@ -29,12 +28,12 @@ class NetworkConnection extends EventEmitter {
     this.wasOnline = undefined;
     this.isOnline = undefined;
 
-    // setInterval(() => this.test(), 5 * 1000); // Better wait 5s after successful request (see above)
+    // SetInterval(() => this.test(), 5 * 1000); // Better wait 5s after successful request (see above)
     this.test();
   }
 
-  test() {
-    needle.get(`https://${this.host}:${this.port}/`, (err) => {
+  test () {
+    needle.get(`https://${this.host}:${this.port}/`, err => {
       if (err) {
         this.wentOffline();
       } else {
@@ -45,7 +44,7 @@ class NetworkConnection extends EventEmitter {
     });
   }
 
-  wentOffline() {
+  wentOffline () {
     this.wasOnline = this.isOnline;
     this.isOnline = false;
 
@@ -54,7 +53,7 @@ class NetworkConnection extends EventEmitter {
     }
   }
 
-  wentOnline() {
+  wentOnline () {
     this.wasOnline = this.isOnline;
     this.isOnline = true;
 

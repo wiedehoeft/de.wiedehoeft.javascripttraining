@@ -1,16 +1,16 @@
 'use strict';
 
 const mongo = require('mongodb'),
-  {uuid} = require('uuidv4');
+      { uuid } = require('uuidv4');
 
-const {flaschenpost} = require('flaschenpost');
+const { flaschenpost } = require('flaschenpost');
 
-const MongoClient = mongo.MongoClient;
+const { MongoClient } = mongo;
 
 const logger = flaschenpost.getLogger();
 
 const database = {
-  initialize(connectionString, callback) {
+  initialize (connectionString, callback) {
     if (!connectionString) {
       throw new Error('ConnetionString is missing');
     }
@@ -19,20 +19,21 @@ const database = {
       throw new Error('Callback is missing');
     }
 
-    MongoClient.connect(connectionString, {autoReconnect: true}, (err, client) => {
+    MongoClient.connect(connectionString, { autoReconnect: true }, (err, client) => {
       if (err) {
         return callback(err);
       }
 
       // TODO: Mappings not initialized at first call
       const mappings = client.db('admin').collection('mappings');
+
       this.mappings = mappings;
 
       callback(null);
     });
   },
 
-  getMapping(alias, callback) {
+  getMapping (alias, callback) {
     if (!alias) {
       throw new Error('Alias is missing');
     }
@@ -41,9 +42,9 @@ const database = {
       throw new Error('Callback is missing');
     }
 
-    logger.info('Searching with alias', {alias});
+    logger.info('Searching with alias', { alias });
 
-    this.mappings.findOne({alias}, (err, mapping) => {
+    this.mappings.findOne({ alias }, (err, mapping) => {
       if (err) {
         return callback(err);
       }
@@ -55,7 +56,7 @@ const database = {
     });
   },
 
-  createMapping(alias, target, callback) {
+  createMapping (alias, target, callback) {
     if (!alias) {
       throw new Error('Alias is missing');
     }
@@ -91,15 +92,15 @@ const database = {
     });
   },
 
-  getMappings(callback) {
+  getMappings (callback) {
     if (!callback) {
       throw new Error('Callback is missing');
     }
 
-    this.mappings
-      .find({}, {_id: 0}) //TODO: Fix me!
-      .sort({alias: 1})
-      .toArray((err, mappings) => {
+    this.mappings.
+      find({}, { _id: 0 }). // TODO: Fix me!
+      sort({ alias: 1 }).
+      toArray((err, mappings) => {
         if (err) {
           return callback(err);
         }
@@ -107,7 +108,7 @@ const database = {
       });
   },
 
-  invokeMapping(id, callback) {
+  invokeMapping (id, callback) {
     if (!id) {
       throw new Error('ID is missing');
     }
@@ -116,10 +117,11 @@ const database = {
       throw new Error('Callback is missing');
     }
 
-    this.mappings.updateOne({id}, {$inc: {'statistics.invoked': 1}}, err => {
+    this.mappings.updateOne({ id }, { $inc: { 'statistics.invoked': 1 }}, err => {
       if (err) {
         return callback(err);
       }
+
       return callback(null);
     });
   }

@@ -20,7 +20,7 @@ server.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
 
-/* express */
+/* Express */
 const server2 = http.createServer(expressServer);
 
 server2.listen(3001, () => {

@@ -10,12 +10,12 @@
 
 const https = require('https');
 
-const {flaschenpost} = require('flaschenpost'),
-  {processenv} = require('processenv');
+const { flaschenpost } = require('flaschenpost'),
+      { processenv } = require('processenv');
 
 const database = require('./lib/database'),
-  getKeys = require('./keys'), //uses index.js
-  getApp = require('./lib/getApp');
+      getKeys = require('./keys'), // Uses index.js
+      getApp = require('./lib/getApp');
 
 const logger = flaschenpost.getLogger();
 
@@ -24,13 +24,13 @@ const port = processenv('PORT') || 3000;
 
 database.initialize(connectionString, err => {
   if (err) {
-    logger.error('Failed to connect to database!', {err});
+    logger.error('Failed to connect to database!', { err });
     process.exit(1);
   }
 });
 
 const keys = getKeys(),
-  app = getApp(database);
+      app = getApp(database);
 
 const server = https.createServer({
   cert: keys.certificate,
@@ -38,5 +38,5 @@ const server = https.createServer({
 }, app);
 
 server.listen(port, () => {
-  logger.info('Server started', {port: port});
+  logger.info('Server started', { port });
 });
