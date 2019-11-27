@@ -13,15 +13,24 @@ const https = require('https');
 const {flaschenpost} = require('flaschenpost'),
   {processenv} = require('processenv');
 
-const getKeys = require('./keys'), //uses index.js
+const database = require('./database'),
+  getKeys = require('./keys'), //uses index.js
   getApp = require('./lib/getApp');
 
 const logger = flaschenpost.getLogger();
 
+const connectionString = processenv('MONGO_URL') || 'mongodb://admin:secret@localhost:27017';
 const port = processenv('PORT') || 3000;
 
+database.initialize(connectionString, err => {
+  if (err) {
+    logger.error('Failed to connect to database!', {err});
+    process.exit(1);
+  }
+});
+
 const keys = getKeys(),
-  app = getApp();
+  app = getApp(database);
 
 const server = https.createServer({
   cert: keys.certificate,
