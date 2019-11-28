@@ -21,6 +21,7 @@
     "expect": "^24.9.0",
     "express": "^4.17.1",
     "flaschenpost": "^4.0.0",
+    "isolated": "^0.3.0",
     "mocha": "^6.2.2",
     "needle": "^2.4.0",
     "processenv": "^3.0.0",
