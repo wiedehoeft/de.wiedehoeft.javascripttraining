@@ -24,8 +24,10 @@
     "isolated": "^0.3.0",
     "mocha": "^6.2.2",
     "needle": "^2.4.0",
+    "nock": "^11.7.0",
     "processenv": "^3.0.0",
     "require-dir": "^1.2.0",
+    "supertest": "^4.0.2",
     "uuidv4": "^6.0.0"
   }
 }
