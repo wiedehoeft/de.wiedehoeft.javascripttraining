@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "eslint": "eslint"
+    "test": "mocha --recursive",
+    "eslint": "eslint",
+    "mocha-reporters": "mocha --reporters"
   },
   "author": "",
   "license": "ISC",
