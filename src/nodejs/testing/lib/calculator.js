@@ -2,13 +2,33 @@
 
 const calculator = {};
 
-calculator.add = (...numbers) => {
-  if (numbers.filter(number => !isNaN(number)).length === 0) {
-    throw new Error('Numbers are missing');
-  }
+const addWithCache = () => {
+  const cache = [0, 1];
 
-  return numbers.reduce((sum, number) => sum + number);
+  console.log('Starting calculator');
+
+  const sum = (...numbers) => {
+
+    console.log('Starting sum');
+
+    if (numbers.filter(number => !isNaN(number)).length === 0) {
+      throw new Error('Numbers are missing');
+    }
+
+    const result = cache[numbers];
+
+    if (typeof result !== 'number') {
+      console.log('Calculating for', numbers);
+      cache[numbers] = numbers.reduce((currentSum, number) => currentSum + number);
+    }
+
+    return cache[numbers];
+  };
+
+  return sum;
 };
+
+calculator.add = addWithCache();
 
 calculator.addAsync = (callback, ...numbers) => {
   if (!callback) {

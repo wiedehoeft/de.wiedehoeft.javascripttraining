@@ -34,6 +34,26 @@ describe('calculator', () => {
       expect(result).toThrowError('Numbers are missing');
       done();
     });
+
+    it('Should allow composite operations', done => {
+      // Act
+      const result = calculator.add(3, calculator.add(3, calculator.add(3, 4)));
+
+      // Assert
+      expect(result).toEqual(13);
+      done();
+    });
+
+    it('Should only calculate once', done => {
+      // Act
+      calculator.add(3, 4);
+      calculator.add(3, 4);
+      calculator.add(3, 4);
+      calculator.add(4, 4);
+
+      // Assert
+      done();
+    });
   });
 
   describe('async', () => {
