@@ -11,6 +11,19 @@ bowlingGame.start = () => {
 };
 
 bowlingGame.roll = (firstRow, secondRow = 0) => {
+  console.log(`first row is ${firstRow} and second row is ${secondRow}`);
+
+  const firstRowAsNumber = Number.parseInt(firstRow);
+  const secondRowAsNumber = Number.parseInt(secondRow);
+
+  if (isNaN(firstRowAsNumber)) {
+    throw new Error('Please parse a number or number string as first parameter!');
+  }
+
+  if (isNaN(secondRowAsNumber)) {
+    throw new Error('Please parse a number or number string as second parameter!');
+  }
+
   if (frameResult.length === 11) {
     throw new Error('Game ended!');
   }
@@ -20,30 +33,30 @@ bowlingGame.roll = (firstRow, secondRow = 0) => {
       throw new Error('Game ended!');
     }
 
-    if (secondRow > 0) {
+    if (secondRowAsNumber > 0) {
       throw new Error('Additional frame has just one roll!');
     }
   }
 
-  if (firstRow === 10 && secondRow > 0) {
+  if (firstRowAsNumber === 10 && secondRowAsNumber > 0) {
     throw new Error('Cannot have a second roll for a strike!');
   }
 
-  frameResult.push([firstRow, secondRow]);
-  const resultCurrentFrame = firstRow + secondRow;
+  frameResult.push([firstRowAsNumber, secondRowAsNumber]);
+  const resultCurrentFrame = firstRowAsNumber + secondRowAsNumber;
   gameResult += resultCurrentFrame;
 
   if (frameResult.length > 1) {
     if (lastFrameWasStrike()) {
-      gameResult += firstRow + secondRow;
+      gameResult += firstRowAsNumber + secondRowAsNumber;
     } else if (lastFrameWasSpare()) {
-      gameResult += firstRow;
+      gameResult += firstRowAsNumber;
     }
   }
 
   if (frameResult.length > 2) {
     if (twoFramesBeforeWasStrike()) {
-      gameResult += firstRow;
+      gameResult += firstRowAsNumber;
     }
   }
 
@@ -68,6 +81,5 @@ const lastFrameWasSpare = () => {
 const lastFrameWasNeitherStrikeNorSpare = () => {
   return !lastFrameWasStrike() && !lastFrameWasSpare()
 };
-
 
 module.exports = bowlingGame;

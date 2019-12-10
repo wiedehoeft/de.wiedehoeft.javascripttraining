@@ -213,5 +213,39 @@ describe(' Bowling Game', () => {
 
     // Assert
     expect(result).toThrowError('Cannot have a second roll for a strike!');
-  })
+  });
+
+  it('should try to cast strings as numbers', () => {
+    // Arrange
+    const firstRoll = '5';
+
+    // Act
+    const result = sut.roll(firstRoll);
+
+    // Assert
+    expect(result).toEqual(5);
+  });
+
+  it('should raise error when first parameter is not a parsable number', () => {
+    // Arrange
+    const firstRoll = 'a';
+
+    // Act
+    const result = () => sut.roll(firstRoll);
+
+    // Assert
+    expect(result).toThrowError('Please parse a number or number string as first parameter!');
+  });
+
+  it('should raise error when second parameter is not a parsable number', () => {
+    // Arrange
+    const firstRoll = '1';
+    const secondRoll = 'a';
+
+    // Act
+    const result = () => sut.roll(firstRoll, secondRoll);
+
+    // Assert
+    expect(result).toThrowError('Please parse a number or number string as second parameter!');
+  });
 });
