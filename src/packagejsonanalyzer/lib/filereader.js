@@ -5,14 +5,16 @@ const path = require('path');
 
 const fileReader = {};
 
-fileReader.readContentFromFile = (filePath, callback) => {
+fileReader.readContentFromFile = (filePath) => {
 
-  return fs.readFile(filePath, {encoding: 'utf8'}, (err, content) => {
-    if (err) {
-      return callback(err);
-    }
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, {encoding: 'utf8'}, (err, content) => {
+      if (err) {
+        reject(err);
+      }
 
-    return callback(null, content);
+      resolve(content);
+    })
   });
 };
 
