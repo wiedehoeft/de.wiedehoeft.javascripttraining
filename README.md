@@ -1,7 +1,7 @@
 # What you find in `src/` dir
 
 ## bowlinggame
-Demo implementation from BowlingGame-Kata[6].
+Demo implementation from [BowlingGame-Kata][6].
 
 ## browser_js
 Demo to show broken `this` reference.
@@ -16,7 +16,7 @@ Some examples for functional programming styles.
 Resolved katas.
 
 ## mars_rover
-Started to implemented MarsRover-Kata[7]. Feel free to complete :).
+Started to implemented [MarsRover-Kata][7]. Feel free to complete :).
 
 ## nodejs
 Sources for tutorials from [Heise][1]. Scroll to bottom of the page for an overview of all tutorial movies.
