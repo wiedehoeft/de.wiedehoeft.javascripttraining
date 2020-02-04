@@ -1,0 +1,8 @@
+* saveApi: Ergebnisse nach Spielende speichern
+* highscoreApi: Aktuell beste Spielergebnisse ausgeben
+* lastGames: Anzeige der letzen 10 Spiele
+
+* Einführung Usernamen
+
+* HTTPS-Server verwenden
+* Loggen mit Logger anstatt Konsole
