@@ -3,11 +3,11 @@
 const calculator = {};
 
 const addWithCache = () => {
-  const cache = [0, 1];
+  const cache = [];
 
   console.log('Starting calculator');
 
-  const sum = (...numbers) => {
+  return (...numbers) => {
 
     console.log('Starting sum');
 
@@ -24,8 +24,6 @@ const addWithCache = () => {
 
     return cache[numbers];
   };
-
-  return sum;
 };
 
 calculator.add = addWithCache();
