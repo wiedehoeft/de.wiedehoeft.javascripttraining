@@ -16,8 +16,8 @@ The tests are written with Mocha and can be run in IDE or with `npm test`.
 * [The Modern JavaScript Tutorial][4]
 * [NodeJS-Documentation][5]
 
-[1] https://www.heise.de/developer/artikel/Einfuehrung-in-Node-js-Folge-26-Let-s-code-comparejs-4330258.html
-[2] https://www.amazon.de/Professionell-entwickeln-mit-JavaScript-Enterprise-f%C3%A4higen/dp/3836223791
-[3] https://developer.mozilla.org/de/
-[4] https://javascript.info/
-[5] https://nodejs.org/api/
+[1]: https://www.heise.de/developer/artikel/Einfuehrung-in-Node-js-Folge-26-Let-s-code-comparejs-4330258.html
+[2]: https://www.amazon.de/Professionell-entwickeln-mit-JavaScript-Enterprise-f%C3%A4higen/dp/3836223791
+[3]: https://developer.mozilla.org/de/
+[4]: https://javascript.info/
+[5]: https://nodejs.org/api/
