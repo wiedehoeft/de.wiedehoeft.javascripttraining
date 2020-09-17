@@ -11,16 +11,19 @@ const app = express();
 
 const packageJson = path.join(__dirname, '..', '..', 'package.json');
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  console.log('Got request');
 
+  try {
+    const result = await fileReader.readContentFromFile(packageJson);
 
-  fileReader.readContentFromFile(packageJson, (err, content) => {
     res.set('Content-Type', 'text/html');
-
-    const properties = fileAnalyzer.getPropertiesFromFile(JSON.parse(content));
-
+    const properties = fileAnalyzer.getPropertiesFromFile(JSON.parse(result));
     res.send(properties);
-  })
+  } catch (e) {
+    console.log(e);
+    res.send(e);
+  }
 });
 
 const server = http.createServer(app);
