@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "flaschenpost": "^4.0.0",
     "isolated": "^0.3.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "needle": "^2.4.0",
     "nock": "^11.7.0",
     "processenv": "^3.0.0",
